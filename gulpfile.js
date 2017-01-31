@@ -33,7 +33,8 @@ var config = {
       'app/libs/moment/min/moment.min.js',
       'app/libs/angular-ui-calendar/src/calendar.js',
       'app/libs/fullcalendar/dist/fullcalendar.min.js',
-      'app/libs/fullcalendar/dist/gcal.js'
+      'app/libs/fullcalendar/dist/gcal.js',
+      'app/libs/Scrollify/jquery.scrollify.js'
     ],
     libsCSS: [
       'app/libs/angular-material/angular-material.min.css',
@@ -44,8 +45,9 @@ var config = {
       'app/libs/fullcalendar/dist/fullcalendar.min.css'
     ],
     libsFonts: [
-      'app/assets/libs/font-awesome/fonts/**',
-      'app/assets/libs/bootstrap/fonts/**'
+      'app/libs/font-awesome/fonts/**',
+      'app/libs/bootstrap/fonts/**',
+      'app/fonts/**'
     ]
   },
   dest:{
