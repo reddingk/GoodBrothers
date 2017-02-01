@@ -5,7 +5,7 @@ var directives = angular.module('directives', []);
 var components = angular.module('components', ['ui.bootstrap', 'ngAnimate', 'ngSanitize']);
 var services = angular.module('services',[]);
 
-var GoodBrosSite = angular.module('GoodBrosSite', ['ngMaterial', 'ngAnimate', 'ui.router', 'directives', 'components',	'services', 'routes']);
+var GoodBrosSite = angular.module('GoodBrosSite', ['ngMaterial', 'ngAnimate', 'fullPage.js', 'ui.router', 'directives', 'components',	'services', 'routes']);
 
 GoodBrosSite.config(['$stateProvider', '$urlRouterProvider','$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
       $stateProvider
@@ -21,8 +21,34 @@ GoodBrosSite.config(['$stateProvider', '$urlRouterProvider','$locationProvider',
       });
 
       $urlRouterProvider.otherwise('/');
-      //$locationProvider.html5Mode(true);
+      $locationProvider.html5Mode(true);
     }]);
+
+components.component('aboutus', {
+  bindings: {},
+	controller: function ($scope, $timeout) {
+      var ctrl = this;
+      // variables
+      ctrl.content = [
+        {"icon":"fa-handshake-o", "title":"Our Promise", "img":"imgs/promise2.jpg","content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."},
+        {"icon":"fa-map-marker", "title":"Where We Are Located", "img":"imgs/where1.jpg","content":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."},
+        {"icon":"fa-id-card-o", "title":"JD + H", "img":"imgs/BC.jpg","content":"Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur."}
+      ];
+
+      ctrl.selected = ctrl.content[0];
+      $scope.selectedItem = ctrl.selected;
+      $scope.visible = true;
+
+      ctrl.changeSelected = function(item){
+        ctrl.selected = item;
+        $scope.selectedItem = item;
+      }
+      ctrl.isActive = function(item){
+        return (ctrl.selected == item);
+      }
+   },
+   templateUrl: 'views/aboutus.html'
+});
 
 // root component: all other components will be under this component
 // objects: view - this will store the state and other high level objects
@@ -65,9 +91,7 @@ components.component('gbHeader', {
   },
 	controller: function ($scope, $location) {
     var ctrl = this;
-    ctrl.pageAnchor = function(location){      
-      $location.hash(location);
-    }
+
 
    },
    templateUrl: 'views/_header.html'
@@ -80,35 +104,27 @@ components.component('home', {
       // variables
       ctrl.title = "Home";
 
-      $.scrollify({
-        section : ".page-section",
-        sectionName : "section-name"/*,
-        before:function(i,panels) {
-          var ref = panels[i].attr("data-section-name");
-          $(".page-section .active").removeClass("active");
-          $(".page-section").find("a[href=\"#" + ref + "\"]").addClass("active");
-        },
-        afterRender: function() {
-          var pagination = "<div class=\"side-container\">";
-          var activeClass = "";
-          $(".page-section").each(function(i) {
-            activeClass = "";
-            if(i===0) {
-              activeClass = "active";
-            }
-            //pagination += "<li><a class=\"" + activeClass + "\" href=\"#" + $(this).attr("data-section-name") + "\"><span class=\"hover-text\">" + $(this).attr("data-section-name").charAt(0).toUpperCase() + $(this).attr("data-section-name").slice(1) + "</span></a></li>";
-            pagination += "<a class=\"side-item\"  class=\""+ activeClass+ "\" href=\"#" +$(this).attr("data-section-name") + "\"><div class=\"text\">"+$(this).attr("data-section-name")+"</div> <div class=\"icon\"></div></a>"
-          });
 
-          pagination += "</div>";
+      ctrl.mainOptions = {
+        anchors: ['home', 'services', 'galleries', 'testimonies', 'aboutus', 'contactus'],
+			  menu: '#gb-inside-nav',
 
-          $(".sidenav").append(pagination);
-        }*/
-      });
-
-      //$(".page-section a").on("click",$.scrollify.move);
+        //Accessibility
+        keyboardScrolling: true,
+        recordHistory: true
+      }
    },
    templateUrl: 'views/home.html'
+});
+
+components.component('services', {
+  bindings: {},
+	controller: function () {
+      var ctrl = this;
+      // variables
+      
+   },
+   templateUrl: 'views/services.html'
 });
 
 components.component('gbSidenav', {
@@ -118,13 +134,112 @@ components.component('gbSidenav', {
   },
 	controller: function ($scope, $window) {
     var ctrl = this;
-    ctrl.pages = [{"name":"home", "location":"!/"},{"name":"services", "location":"services"}, {"name":"galleries", "location":"galleries"},{"name":"testimonies", "location":"testimonies"},{"name":"about us", "location":"aboutus"},{"name":"contact us", "location":"contactus"}];
+    ctrl.pages = [{"name":"home", "location":"home"},{"name":"services", "location":"services"}, {"name":"galleries", "location":"galleries"},{"name":"testimonies", "location":"testimonies"},{"name":"about us", "location":"aboutus"},{"name":"contact us", "location":"contactus"}];
 
     ctrl.isActive = function(id){
       return ($window.location.hash == '#'+id);
     }
    },
    templateUrl: 'views/_sidenav.html'
+});
+
+components.component('testimonies', {
+  bindings: {},
+	controller: function ($scope, $timeout) {
+      var ctrl = this;
+      // variables
+      ctrl.allItems = [
+        {"id":0, "name":"Test 0", "content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
+        {"id":1, "name":"Test 1", "content":"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."},
+        {"id":2, "name":"Test 2", "content":"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."},
+        {"id":3, "name":"Test 3", "content":"Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."},
+        {"id":4, "name":"Test 4", "content":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."},
+        {"id":5, "name":"Test 5", "content":"Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."},
+        {"id":6, "name":"Test 6", "content":"Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem."},
+      ];
+      ctrl.currentId = -1;
+      /*ctrl.displayItems = [
+        {"class":"before", "status":"inactive", "name":"", "content":""},
+        {"class":"selected", "status":"active", "id":-1,"name":"", "content":""},
+        {"class":"after", "status":"inactive", "name":"", "content":""}
+      ];*/
+
+      ctrl.displayItems2 = {
+        "before":{"class":"before", "status":"inactive", "name":"", "content":""},
+        "current":{"class":"selected", "status":"active", "id":-1,"name":"", "content":""},
+        "after":{"class":"after", "status":"inactive", "name":"", "content":""}
+      };
+
+      ctrl.setDisplay = function(before, current, next){
+        var before_obj = {"class":"before", "status":"inactive", "name":"", "content":""};
+        var next_obj = {"class":"after", "status":"inactive", "name":"", "content":""};
+        var current_obj = {"class":"selected", "status":"active", "id":-1,"name":"", "content":""};
+
+        // Set Before Item
+        before_obj.name = (before != null ? before.name : "");
+        before_obj.content = (before != null ? before.content : "");
+
+        // Set Next Item
+        next_obj.name = (next != null ? next.name : "");
+        next_obj.content = (next != null ? next.content : "");
+
+        // Set Current Item
+        current_obj.name = (current != null ? current.name : "");
+        current_obj.content = (current != null ? current.content : "");
+        current_obj.id = (current != null ? current.id : -1);
+
+        // Set Special Current Id
+        ctrl.currentId = (current != null ? current.id : -1);
+
+        // Set Displays
+        //ctrl.displayItems = [before_obj, current_obj, next_obj];
+        ctrl.displayItems2.before = before_obj;
+        ctrl.displayItems2.current = current_obj;
+        ctrl.displayItems2.after = next_obj;
+
+        var tst = 0;
+      }
+
+      ctrl.adjustDisplay = function(type, location){
+        var currentId = ctrl.currentId;
+        if(type == "next"){
+          var nextId = currentId+1;
+          if(nextId < ctrl.allItems.length){
+            var prev = $.grep(ctrl.allItems, function(e) { return e.id == currentId; });
+            var newCur = $.grep(ctrl.allItems, function(e) { return e.id == nextId; });
+            var next = (nextId+1 < ctrl.allItems.length ? $.grep(ctrl.allItems, function(e) { return e.id == (nextId+1); }) : null);
+
+            // Set New Display
+            ctrl.setDisplay((prev != null && prev.length > 0 ? prev[0] : null), (newCur != null && newCur.length > 0 ? newCur[0] : null), (next != null && next.length > 0 ? next[0] : null));
+          }
+        }
+        else if(type == "prev"){
+          var prevId = currentId-1;
+          if(prevId >= 0){
+            var prev = (prevId-1 >= 0 ? $.grep(ctrl.allItems, function(e) { return e.id == (prevId-1); }) : null);
+            var newCur = $.grep(ctrl.allItems, function(e) { return e.id == prevId; });
+            var next = $.grep(ctrl.allItems, function(e) { return e.id == currentId; });
+
+            // Set New Display
+            ctrl.setDisplay((prev != null && prev.length > 0 ? prev[0] : null), (newCur != null && newCur.length > 0 ? newCur[0] : null), (next != null && next.length > 0 ? next[0] : null));
+          }
+        }
+        else if(type == "id"){
+          if(location >= 0 && location < ctrl.allItems.length){
+            var prev = (location-1 >= 0 ? $.grep(ctrl.allItems, function(e) { return e.id == (location-1); }) : null);
+            var newCur = $.grep(ctrl.allItems, function(e) { return e.id == location; });
+            var next = (location+1 < ctrl.allItems.length ? $.grep(ctrl.allItems, function(e) { return e.id == (location+1); }) : null);
+
+            // Set New Display
+            ctrl.setDisplay((prev != null && prev.length > 0 ? prev[0] : null), (newCur != null && newCur.length > 0 ? newCur[0] : null), (next != null && next.length > 0 ? next[0] : null));
+          }
+        }
+        else { /*Nothing*/}
+      }
+      // Set Initial Display
+      ctrl.setDisplay(null, (ctrl.allItems.length > 0 ? ctrl.allItems[0] : null), (ctrl.allItems.length > 1 ? ctrl.allItems[1] : null) );
+   },
+   templateUrl: 'views/testimonies.html'
 });
 
 components.component('test', {
@@ -155,6 +270,21 @@ directives.directive('sideCtrl', ['$window', function($window) {
           }
         }
       });
+    }
+  }
+}]);
+
+directives.directive('switchAnimation', ['$animate', '$timeout', function($animate, $timeout) {
+  return {
+    restrict: 'EA',
+    link: function ($scope, element, attrs) {
+      $scope.$watch(attrs.switchAnimation, function(val, oldVal) {
+          if(val === oldVal) return; // Skip inital call
+          
+          $animate.addClass(element,attrs.sin).then(function() {
+            $timeout(function() {$animate.removeClass(element,attrs.sin)});
+          });
+        });
     }
   }
 }]);

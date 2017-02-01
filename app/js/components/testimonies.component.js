@@ -1,0 +1,98 @@
+components.component('testimonies', {
+  bindings: {},
+	controller: function ($scope, $timeout) {
+      var ctrl = this;
+      // variables
+      ctrl.allItems = [
+        {"id":0, "name":"Test 0", "content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
+        {"id":1, "name":"Test 1", "content":"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."},
+        {"id":2, "name":"Test 2", "content":"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."},
+        {"id":3, "name":"Test 3", "content":"Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."},
+        {"id":4, "name":"Test 4", "content":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."},
+        {"id":5, "name":"Test 5", "content":"Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."},
+        {"id":6, "name":"Test 6", "content":"Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem."},
+      ];
+      ctrl.currentId = -1;
+      /*ctrl.displayItems = [
+        {"class":"before", "status":"inactive", "name":"", "content":""},
+        {"class":"selected", "status":"active", "id":-1,"name":"", "content":""},
+        {"class":"after", "status":"inactive", "name":"", "content":""}
+      ];*/
+
+      ctrl.displayItems2 = {
+        "before":{"class":"before", "status":"inactive", "name":"", "content":""},
+        "current":{"class":"selected", "status":"active", "id":-1,"name":"", "content":""},
+        "after":{"class":"after", "status":"inactive", "name":"", "content":""}
+      };
+
+      ctrl.setDisplay = function(before, current, next){
+        var before_obj = {"class":"before", "status":"inactive", "name":"", "content":""};
+        var next_obj = {"class":"after", "status":"inactive", "name":"", "content":""};
+        var current_obj = {"class":"selected", "status":"active", "id":-1,"name":"", "content":""};
+
+        // Set Before Item
+        before_obj.name = (before != null ? before.name : "");
+        before_obj.content = (before != null ? before.content : "");
+
+        // Set Next Item
+        next_obj.name = (next != null ? next.name : "");
+        next_obj.content = (next != null ? next.content : "");
+
+        // Set Current Item
+        current_obj.name = (current != null ? current.name : "");
+        current_obj.content = (current != null ? current.content : "");
+        current_obj.id = (current != null ? current.id : -1);
+
+        // Set Special Current Id
+        ctrl.currentId = (current != null ? current.id : -1);
+
+        // Set Displays
+        //ctrl.displayItems = [before_obj, current_obj, next_obj];
+        ctrl.displayItems2.before = before_obj;
+        ctrl.displayItems2.current = current_obj;
+        ctrl.displayItems2.after = next_obj;
+
+        var tst = 0;
+      }
+
+      ctrl.adjustDisplay = function(type, location){
+        var currentId = ctrl.currentId;
+        if(type == "next"){
+          var nextId = currentId+1;
+          if(nextId < ctrl.allItems.length){
+            var prev = $.grep(ctrl.allItems, function(e) { return e.id == currentId; });
+            var newCur = $.grep(ctrl.allItems, function(e) { return e.id == nextId; });
+            var next = (nextId+1 < ctrl.allItems.length ? $.grep(ctrl.allItems, function(e) { return e.id == (nextId+1); }) : null);
+
+            // Set New Display
+            ctrl.setDisplay((prev != null && prev.length > 0 ? prev[0] : null), (newCur != null && newCur.length > 0 ? newCur[0] : null), (next != null && next.length > 0 ? next[0] : null));
+          }
+        }
+        else if(type == "prev"){
+          var prevId = currentId-1;
+          if(prevId >= 0){
+            var prev = (prevId-1 >= 0 ? $.grep(ctrl.allItems, function(e) { return e.id == (prevId-1); }) : null);
+            var newCur = $.grep(ctrl.allItems, function(e) { return e.id == prevId; });
+            var next = $.grep(ctrl.allItems, function(e) { return e.id == currentId; });
+
+            // Set New Display
+            ctrl.setDisplay((prev != null && prev.length > 0 ? prev[0] : null), (newCur != null && newCur.length > 0 ? newCur[0] : null), (next != null && next.length > 0 ? next[0] : null));
+          }
+        }
+        else if(type == "id"){
+          if(location >= 0 && location < ctrl.allItems.length){
+            var prev = (location-1 >= 0 ? $.grep(ctrl.allItems, function(e) { return e.id == (location-1); }) : null);
+            var newCur = $.grep(ctrl.allItems, function(e) { return e.id == location; });
+            var next = (location+1 < ctrl.allItems.length ? $.grep(ctrl.allItems, function(e) { return e.id == (location+1); }) : null);
+
+            // Set New Display
+            ctrl.setDisplay((prev != null && prev.length > 0 ? prev[0] : null), (newCur != null && newCur.length > 0 ? newCur[0] : null), (next != null && next.length > 0 ? next[0] : null));
+          }
+        }
+        else { /*Nothing*/}
+      }
+      // Set Initial Display
+      ctrl.setDisplay(null, (ctrl.allItems.length > 0 ? ctrl.allItems[0] : null), (ctrl.allItems.length > 1 ? ctrl.allItems[1] : null) );
+   },
+   templateUrl: 'views/testimonies.html'
+});

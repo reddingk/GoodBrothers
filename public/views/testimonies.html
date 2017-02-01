@@ -1,0 +1,27 @@
+<div class="page-container content-page testimonies-page">
+  <div class="page-title">Testimonies</div>
+
+  <div class="testimonies-container">
+    <!--<div ng-repeat="item in $ctrl.displayItems" class="testimonies-item {{item.class}}">
+      <div class="item-content">{{item.content}}</div>
+      <div class="item-name">{{item.name}}</div>
+    </div>-->
+    <div class="testimonies-item {{$ctrl.displayItems2.before.class}}">
+      <div class="item-content">{{$ctrl.displayItems2.before.content}}</div>
+      <div class="item-name">{{$ctrl.displayItems2.before.name}}</div>
+    </div>
+    <div class="testimonies-item {{$ctrl.displayItems2.current.class}}">
+      <div class="item-content">{{$ctrl.displayItems2.current.content}}</div>
+      <div class="item-name">{{$ctrl.displayItems2.current.name}}</div>
+    </div>
+    <div class="testimonies-item {{$ctrl.displayItems2.after.class}}">
+      <div class="item-content">{{$ctrl.displayItems2.after.content}}</div>
+      <div class="item-name">{{$ctrl.displayItems2.after.name}}</div>
+    </div>
+  </div>
+
+  <div class="ctrls">
+    <div class="prev-ctrl" ng-click="$ctrl.adjustDisplay('prev',0)">Prev</div>
+    <div class="next-ctrl" ng-click="$ctrl.adjustDisplay('next',0)">Next</div>
+  </div>
+</div>
