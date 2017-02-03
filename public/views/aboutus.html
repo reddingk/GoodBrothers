@@ -13,5 +13,5 @@
       <div class="about-img"><img ng-src="{{$ctrl.selected.img}}" switch-animation="selectedItem" sin="fadeIn"></div>
     </div>
   </div>
-
+  <div class="bouncing-bubbles" ng-repeat="n in $ctrl.buildArray(7) track by $index" random-motion></div>
 </div>

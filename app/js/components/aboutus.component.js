@@ -20,6 +20,9 @@ components.component('aboutus', {
       ctrl.isActive = function(item){
         return (ctrl.selected == item);
       }
+      ctrl.buildArray = function(num) {
+        return new Array(num);
+      }
    },
    templateUrl: 'views/aboutus.html'
 });

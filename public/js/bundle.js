@@ -46,6 +46,9 @@ components.component('aboutus', {
       ctrl.isActive = function(item){
         return (ctrl.selected == item);
       }
+      ctrl.buildArray = function(num) {
+        return new Array(num);
+      }
    },
    templateUrl: 'views/aboutus.html'
 });
@@ -177,7 +180,9 @@ components.component('services', {
 	controller: function () {
       var ctrl = this;
       // variables
-      
+      ctrl.buildArray = function(num) {
+        return new Array(num);
+      }
    },
    templateUrl: 'views/services.html'
 });
@@ -331,6 +336,35 @@ components.component('test', {
    },
    templateUrl: 'views/tst.html'
 });
+
+directives.directive('isVisible', ['$window', function($window) {
+  return {
+    restrict: 'EA',
+    link: function ($scope, element, attrs) {
+
+      // get element position
+      var elementPos = (attrs.voffset == undefined ? 0 : parseInt(attrs.voffset,10 ));
+      var el = element[0];
+      while(el.offsetParent){
+        el = el.offsetParent;
+        elementPos += el.offsetTop;
+      }
+      angular.element($window).bind("scroll", function() {
+        var windowp = angular.element($window)[0];
+
+        if((windowp.pageYOffset >= elementPos) && !element.hasClass("screenVisible")){
+          element.addClass("screenVisible");
+        }
+        else {
+          if(element.hasClass("screenVisible")){
+            //element.removeClass("screenVisible");
+          }
+        }
+      });
+      
+    }
+  }
+}]);
 
 directives.directive('randomMotion', ['$timeout', function($timeout) {
   return {
