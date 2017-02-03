@@ -1,17 +1,80 @@
 .testimonies-page {
   .testimonies-container {
-    overflow-x: scroll;
+    overflow-x: hidden;
     overflow-y: hidden;
     white-space:nowrap;
+    position: relative;
+    width: 100%;
+    height: 80%;
+    border: 1px solid rgba(0,0,0,1);
+    z-index: 2;
+    //background: @themeTeal;//rgba(255,255,255,0.9);
+    background: linear-gradient(141deg, @themeTeal 0%, #1fc8db 51%, @themeBlue 75%);
 
     .testimonies-item {
       display: inline-block;
       width: 45%;
-      padding: 10px 20px;
+      height: 100%;
+      padding: 70px 20px 20px;
       white-space:normal;
       overflow: hidden;
+      position: absolute;
+      top: 0;
+      font-size: 1.5rem;
+      text-align: center;
+      line-height: 2.5rem;
+      font-family: 'Quicksand', sans-serif;
+
       .item-content { display: block;}
-      .item-name { display: block; margin-top: 20px;}
+      .item-name { font-weight: bold; display: block; margin-top: 20px;}
+
+      &.selected { left: 27.5%; }
+      &.before { left: -27.5%; opacity: 0.3; }
+      &.after {  right: -27.5%; opacity: 0.3; }
+
+      &.slideInleft-add-active {
+        -webkit-animation: 0.7s slideInLeft ease backwards;
+        animation: 0.7s slideInLeft ease backwards;
+      }
+      &.slideInright-add-active {
+        -webkit-animation: 0.7s slideInRight ease backwards;
+        animation: 0.7s slideInRight ease backwards;
+      }
+      &.slideIndown-add-active {
+        -webkit-animation: 1s fadeIn ease backwards;
+        animation: 1s fadeIn ease backwards;
+      }
+    }
+
+    .ctrls {
+      .ctrl {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 5;
+        display: inline-block;
+        &.prev-ctrl { left: 20%;}
+        &.next-ctrl { right: 20%;}
+        &.inactive { opacity: 0.2; cursor: auto;}
+
+        i { font-size: 100px; }
+      }
+      .select-list {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        .select-item {
+          width: 10px;
+          height: 10px;
+          border: 1px solid rgba(0,0,0,1);
+          border-radius: 50%;
+          display: inline-block;
+
+          &+.select-item { margin-left: 5px; }
+          &.active { background: rgba(0,0,0,1); }
+        }
+      }
     }
   }
 }

@@ -18,6 +18,7 @@ components.component('testimonies', {
         {"class":"selected", "status":"active", "id":-1,"name":"", "content":""},
         {"class":"after", "status":"inactive", "name":"", "content":""}
       ];*/
+      $scope.direction = {"direction":"", "id":-1};
 
       ctrl.displayItems2 = {
         "before":{"class":"before", "status":"inactive", "name":"", "content":""},
@@ -51,8 +52,6 @@ components.component('testimonies', {
         ctrl.displayItems2.before = before_obj;
         ctrl.displayItems2.current = current_obj;
         ctrl.displayItems2.after = next_obj;
-
-        var tst = 0;
       }
 
       ctrl.adjustDisplay = function(type, location){
@@ -66,6 +65,7 @@ components.component('testimonies', {
 
             // Set New Display
             ctrl.setDisplay((prev != null && prev.length > 0 ? prev[0] : null), (newCur != null && newCur.length > 0 ? newCur[0] : null), (next != null && next.length > 0 ? next[0] : null));
+            $scope.direction = {"direction":"right", "id":nextId};
           }
         }
         else if(type == "prev"){
@@ -77,20 +77,45 @@ components.component('testimonies', {
 
             // Set New Display
             ctrl.setDisplay((prev != null && prev.length > 0 ? prev[0] : null), (newCur != null && newCur.length > 0 ? newCur[0] : null), (next != null && next.length > 0 ? next[0] : null));
+            $scope.direction = {"direction":"left", "id":prevId};
           }
         }
         else if(type == "id"){
-          if(location >= 0 && location < ctrl.allItems.length){
+          if(location >= 0 && location < ctrl.allItems.length && location != currentId){
             var prev = (location-1 >= 0 ? $.grep(ctrl.allItems, function(e) { return e.id == (location-1); }) : null);
             var newCur = $.grep(ctrl.allItems, function(e) { return e.id == location; });
             var next = (location+1 < ctrl.allItems.length ? $.grep(ctrl.allItems, function(e) { return e.id == (location+1); }) : null);
 
             // Set New Display
             ctrl.setDisplay((prev != null && prev.length > 0 ? prev[0] : null), (newCur != null && newCur.length > 0 ? newCur[0] : null), (next != null && next.length > 0 ? next[0] : null));
+            if(location > currentId) {
+              $scope.direction = {"direction":"down", "id":location};
+            }
+            else {
+              $scope.direction = {"direction":"down", "id":location};
+            }
           }
         }
         else { /*Nothing*/}
       }
+
+      ctrl.checkCtrlStatus = function(direction){
+        if(direction == "prev"){
+          return (ctrl.currentId == 0);
+        }
+        else if(direction = "next"){
+          return (ctrl.currentId == (ctrl.allItems.length -1));
+        }
+      }
+
+      ctrl.checkCtrlSelected = function(id){
+        return (ctrl.currentId == id);
+      }
+      
+      ctrl.buildArray = function(num) {
+        return new Array(num);
+      }
+
       // Set Initial Display
       ctrl.setDisplay(null, (ctrl.allItems.length > 0 ? ctrl.allItems[0] : null), (ctrl.allItems.length > 1 ? ctrl.allItems[1] : null) );
    },

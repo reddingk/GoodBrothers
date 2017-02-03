@@ -2,26 +2,27 @@
   <div class="page-title">Testimonies</div>
 
   <div class="testimonies-container">
-    <!--<div ng-repeat="item in $ctrl.displayItems" class="testimonies-item {{item.class}}">
-      <div class="item-content">{{item.content}}</div>
-      <div class="item-name">{{item.name}}</div>
-    </div>-->
-    <div class="testimonies-item {{$ctrl.displayItems2.before.class}}">
-      <div class="item-content">{{$ctrl.displayItems2.before.content}}</div>
+    <div class="testimonies-item {{$ctrl.displayItems2.before.class}}" switch-animation="direction" sin="slideIn">
+      <div class="item-content">"{{$ctrl.displayItems2.before.content}}"</div>
       <div class="item-name">{{$ctrl.displayItems2.before.name}}</div>
     </div>
-    <div class="testimonies-item {{$ctrl.displayItems2.current.class}}">
-      <div class="item-content">{{$ctrl.displayItems2.current.content}}</div>
+    <div class="testimonies-item {{$ctrl.displayItems2.current.class}}" switch-animation="direction" sin="slideIn">
+      <div class="item-content">"{{$ctrl.displayItems2.current.content}}"</div>
       <div class="item-name">{{$ctrl.displayItems2.current.name}}</div>
     </div>
-    <div class="testimonies-item {{$ctrl.displayItems2.after.class}}">
-      <div class="item-content">{{$ctrl.displayItems2.after.content}}</div>
+    <div class="testimonies-item {{$ctrl.displayItems2.after.class}}" switch-animation="direction" sin="slideIn">
+      <div class="item-content">"{{$ctrl.displayItems2.after.content}}"</div>
       <div class="item-name">{{$ctrl.displayItems2.after.name}}</div>
+    </div>
+
+    <div class="ctrls">
+      <div class="ctrl prev-ctrl" ng-click="$ctrl.adjustDisplay('prev',0)" ng-class="{'inactive':$ctrl.checkCtrlStatus('prev')}"><i class="fa fa-angle-left"></i></div>
+      <div class="ctrl next-ctrl" ng-click="$ctrl.adjustDisplay('next',0)" ng-class="{'inactive':$ctrl.checkCtrlStatus('next')}"><i class="fa fa-angle-right"></i></div>
+      <div class="select-list">
+        <div class="select-item" ng-repeat="item in $ctrl.allItems" ng-class="{'active':$ctrl.checkCtrlSelected(item.id)}" ng-click="$ctrl.adjustDisplay('id', item.id)"></div>
+      </div>
     </div>
   </div>
 
-  <div class="ctrls">
-    <div class="prev-ctrl" ng-click="$ctrl.adjustDisplay('prev',0)">Prev</div>
-    <div class="next-ctrl" ng-click="$ctrl.adjustDisplay('next',0)">Next</div>
-  </div>
+  <div class="bouncing-bubbles" ng-repeat="n in $ctrl.buildArray(7) track by $index" random-motion></div>
 </div>

@@ -84,6 +84,61 @@ components.component('gbFooter', {
    templateUrl: 'views/_footer.html'
 });
 
+components.component('gallery', {
+  bindings: {},
+	controller: function ($scope, $timeout, $mdDialog) {
+      var ctrl = this;
+      // variables
+      ctrl.images = [ "imgs/gallery/img1.jpg", "imgs/gallery/img2.jpg", "imgs/gallery/img3.jpg", "imgs/gallery/demo/d1.jpg", "imgs/gallery/demo/d2.jpg", "imgs/gallery/demo/d3.jpg", "imgs/gallery/demo/d4.png" ];
+      var selectedImg = "";
+
+      // Functions
+      ctrl.clientCtrl = function(direction) {
+        var objectWidth = ($('.gallery-item')[0].offsetWidth + 20);
+
+        if(direction == "left"){
+          // Move Left to Right
+          $('.gallery-list-container').animate({ scrollLeft: "-="+objectWidth+"px"}, "slow");
+        }
+        else if(direction == "right"){
+          // Move Right to Left
+          $('.gallery-list-container').animate({ scrollLeft: "+="+objectWidth+"px"}, "slow");
+        }
+      }
+      ctrl.buildArray = function(num) {
+        return new Array(num);
+      }
+      
+      ctrl.openImg = function(img, ev){
+        selectedImg = img;
+        $mdDialog.show({
+          controller: DialogController,
+          templateUrl: 'views/_galleryPop.tmpl.html',
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose:true,
+          fullscreen: true
+        });
+      }
+
+      /**/
+      function DialogController($scope, $mdDialog) {
+        $scope.img = selectedImg;
+        $scope.hide = function() {
+          $mdDialog.hide();
+        };
+
+        $scope.cancel = function() {
+          $mdDialog.cancel();
+        };
+      }
+
+
+
+   },
+   templateUrl: 'views/gallery.html'
+});
+
 components.component('gbHeader', {
   bindings: {},
 	require: {
@@ -163,6 +218,7 @@ components.component('testimonies', {
         {"class":"selected", "status":"active", "id":-1,"name":"", "content":""},
         {"class":"after", "status":"inactive", "name":"", "content":""}
       ];*/
+      $scope.direction = {"direction":"", "id":-1};
 
       ctrl.displayItems2 = {
         "before":{"class":"before", "status":"inactive", "name":"", "content":""},
@@ -196,8 +252,6 @@ components.component('testimonies', {
         ctrl.displayItems2.before = before_obj;
         ctrl.displayItems2.current = current_obj;
         ctrl.displayItems2.after = next_obj;
-
-        var tst = 0;
       }
 
       ctrl.adjustDisplay = function(type, location){
@@ -211,6 +265,7 @@ components.component('testimonies', {
 
             // Set New Display
             ctrl.setDisplay((prev != null && prev.length > 0 ? prev[0] : null), (newCur != null && newCur.length > 0 ? newCur[0] : null), (next != null && next.length > 0 ? next[0] : null));
+            $scope.direction = {"direction":"right", "id":nextId};
           }
         }
         else if(type == "prev"){
@@ -222,20 +277,45 @@ components.component('testimonies', {
 
             // Set New Display
             ctrl.setDisplay((prev != null && prev.length > 0 ? prev[0] : null), (newCur != null && newCur.length > 0 ? newCur[0] : null), (next != null && next.length > 0 ? next[0] : null));
+            $scope.direction = {"direction":"left", "id":prevId};
           }
         }
         else if(type == "id"){
-          if(location >= 0 && location < ctrl.allItems.length){
+          if(location >= 0 && location < ctrl.allItems.length && location != currentId){
             var prev = (location-1 >= 0 ? $.grep(ctrl.allItems, function(e) { return e.id == (location-1); }) : null);
             var newCur = $.grep(ctrl.allItems, function(e) { return e.id == location; });
             var next = (location+1 < ctrl.allItems.length ? $.grep(ctrl.allItems, function(e) { return e.id == (location+1); }) : null);
 
             // Set New Display
             ctrl.setDisplay((prev != null && prev.length > 0 ? prev[0] : null), (newCur != null && newCur.length > 0 ? newCur[0] : null), (next != null && next.length > 0 ? next[0] : null));
+            if(location > currentId) {
+              $scope.direction = {"direction":"down", "id":location};
+            }
+            else {
+              $scope.direction = {"direction":"down", "id":location};
+            }
           }
         }
         else { /*Nothing*/}
       }
+
+      ctrl.checkCtrlStatus = function(direction){
+        if(direction == "prev"){
+          return (ctrl.currentId == 0);
+        }
+        else if(direction = "next"){
+          return (ctrl.currentId == (ctrl.allItems.length -1));
+        }
+      }
+
+      ctrl.checkCtrlSelected = function(id){
+        return (ctrl.currentId == id);
+      }
+      
+      ctrl.buildArray = function(num) {
+        return new Array(num);
+      }
+
       // Set Initial Display
       ctrl.setDisplay(null, (ctrl.allItems.length > 0 ? ctrl.allItems[0] : null), (ctrl.allItems.length > 1 ? ctrl.allItems[1] : null) );
    },
@@ -251,6 +331,60 @@ components.component('test', {
    },
    templateUrl: 'views/tst.html'
 });
+
+directives.directive('randomMotion', ['$timeout', function($timeout) {
+  return {
+    restrict: 'EA',
+    link: function ($scope, element, attrs) {
+      console.log("Start Motion");
+          var parentContainer = element[0].offsetParent;
+
+          // Randomly Set Postion & Velocity
+          var maxVelocity = 100;
+          var posX = (Math.random() * parentContainer.clientWidth);
+          var posY = (Math.random() * parentContainer.clientHeight);
+          var velX = (Math.random() * maxVelocity);
+          var velY = (Math.random() * maxVelocity);
+          var timestamp = null;
+
+          // Move Object
+          (function tick() {
+            var now = new Date().getTime();
+            var borderX = element[0].clientWidth + 5;
+            var borderY = element[0].clientHeight + 5;
+
+            var maxX = parentContainer.clientWidth - borderX;
+            var maxY = parentContainer.clientHeight - borderY;
+
+            var elapsed = (timestamp || now) - now;
+            timestamp = now;
+            posX += elapsed * velX / 1000;
+            posY += elapsed * velY / 1000;
+
+            if (posX > maxX) {
+                posX = 2 * maxX - posX;
+                velX *= -1;
+            }
+            if (posX < 0) {
+                posX = 0;
+                velX *= -1;
+            }
+            if (posY > maxY) {
+                posY = 2 * maxY - posY;
+                velY *= -1;
+            }
+            if (posY < 0) {
+                posY = 0;
+                velY *= -1;
+            }
+            element.css({ "top": posY, "left": posX });
+            // Set Position to $element top and left
+            // Loop to Move object
+            $timeout(tick, 30);
+          })();
+    }
+  }
+}]);
 
 directives.directive('sideCtrl', ['$window', function($window) {
   return {
@@ -280,9 +414,13 @@ directives.directive('switchAnimation', ['$animate', '$timeout', function($anima
     link: function ($scope, element, attrs) {
       $scope.$watch(attrs.switchAnimation, function(val, oldVal) {
           if(val === oldVal) return; // Skip inital call
-          
-          $animate.addClass(element,attrs.sin).then(function() {
-            $timeout(function() {$animate.removeClass(element,attrs.sin)});
+
+          var animation = attrs.sin;
+          if(val.direction != undefined){
+            animation += val.direction;
+          }
+          $animate.addClass(element,animation).then(function() {
+            $timeout(function() {$animate.removeClass(element,animation)});
           });
         });
     }
