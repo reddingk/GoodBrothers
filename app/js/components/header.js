@@ -6,7 +6,6 @@ components.component('gbHeader', {
 	controller: function ($scope, $location) {
     var ctrl = this;
 
-
    },
    templateUrl: 'views/_header.html'
 });

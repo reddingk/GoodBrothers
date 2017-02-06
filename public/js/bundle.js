@@ -5,23 +5,53 @@ var directives = angular.module('directives', []);
 var components = angular.module('components', ['ui.bootstrap', 'ngAnimate', 'ngSanitize']);
 var services = angular.module('services',[]);
 
-var GoodBrosSite = angular.module('GoodBrosSite', ['ngMaterial', 'ngAnimate', 'fullPage.js', 'ui.router', 'directives', 'components',	'services', 'routes']);
+var GoodBrosSite = angular.module('GoodBrosSite', ['ngMaterial', 'ngAnimate', 'fullPage.js', 'anim-in-out', 'ui.router', 'directives', 'components',	'services', 'routes']);
 
 GoodBrosSite.config(['$stateProvider', '$urlRouterProvider','$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
       $stateProvider
       .state('app', {
         url: "/",
-        views: { 'content':{ component: 'home' }  }
+        views: { 'content':{ component: 'cover' }  }
+      })
+      .state('app.services', {
+        url: "services",
+        views: {
+          'content@': { component: 'services' }
+        }
+      })
+      .state('app.gallery', {
+        url: "gallery",
+        views: {
+          'content@': { component: 'gallery' }
+        }
+      })
+      .state('app.testimonies', {
+        url: "testimonies",
+        views: {
+          'content@': { component: 'testimonies' }
+        }
+      })
+      .state('app.aboutus', {
+        url: "aboutus",
+        views: {
+          'content@': { component: 'aboutus' }
+        }
+      })
+      .state('app.contactus', {
+        url: "contactus",
+        views: {
+          'content@': { component: 'contactus' }
+        }
       })
       .state('app.construction', {
         url: "underconstruction",
         views: {
-          'content@': { component: 'construction' }
+          'content@': { component: 'test' }
         }
       });
 
       $urlRouterProvider.otherwise('/');
-      $locationProvider.html5Mode(true);
+      //$locationProvider.html5Mode(true);
     }]);
 
 components.component('aboutus', {
@@ -57,10 +87,31 @@ components.component('aboutus', {
 // objects: view - this will store the state and other high level objects
 components.component('all', {
   bindings: {},
-	controller: function ($scope) {
+	controller: function ($scope, $rootScope) {
     var ctrl = this;
+
+    $rootScope.$on('animStart', function() {
+      //console.log('animStart');
+    });
+
+    $rootScope.$on('animEnd', function() {
+      //console.log('animEnd');
+    });
+
    },
    templateUrl: 'views/all.html'
+});
+
+components.component('contactus', {
+  bindings: {},
+	controller: function () {
+      var ctrl = this;
+      // variables
+      ctrl.buildArray = function(num) {
+        return new Array(num);
+      }
+   },
+   templateUrl: 'views/contactus.html'
 });
 
 components.component('cover', {
@@ -150,7 +201,6 @@ components.component('gbHeader', {
 	controller: function ($scope, $location) {
     var ctrl = this;
 
-
    },
    templateUrl: 'views/_header.html'
 });
@@ -194,7 +244,7 @@ components.component('gbSidenav', {
   },
 	controller: function ($scope, $window) {
     var ctrl = this;
-    ctrl.pages = [{"name":"home", "location":"home"},{"name":"services", "location":"services"}, {"name":"galleries", "location":"galleries"},{"name":"testimonies", "location":"testimonies"},{"name":"about us", "location":"aboutus"},{"name":"contact us", "location":"contactus"}];
+    ctrl.pages = [{"name":"services", "location":"app.services"}, {"name":"galleries", "location":"app.gallery"},{"name":"testimonies", "location":"app.testimonies"},{"name":"about us", "location":"app.aboutus"},{"name":"contact us", "location":"app.contactus"}];
 
     ctrl.isActive = function(id){
       return ($window.location.hash == '#'+id);

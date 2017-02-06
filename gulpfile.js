@@ -36,7 +36,8 @@ var config = {
       'app/libs/fullcalendar/dist/gcal.js',
       'app/libs/fullpage.js/vendors/jquery.slimscroll.min.js',
       'app/libs/fullpage.js/jquery.fullPage.min.js',
-      'app/libs/angular-fullpage.js/angular-fullpage.js'
+      'app/libs/angular-fullpage.js/angular-fullpage.js',
+      'app/libs/angular-ui-router-anim-in-out/anim-in-out.js'
     ],
     libsCSS: [
       'app/libs/angular-material/angular-material.min.css',
@@ -45,7 +46,8 @@ var config = {
       'app/libs/animate.css/animate.min.css',
       'app/libs/angular-bootstrap/ui-bootstrap-csp.css',
       'app/libs/fullcalendar/dist/fullcalendar.min.css',
-      'app/libs/fullpage.js/jquery.fullPage.css'
+      'app/libs/fullpage.js/jquery.fullPage.css'/*,
+      'app/libs/angular-ui-router-anim-in-out/css/anim-in-out.css'*/
     ],
     libsFonts: [
       'app/libs/font-awesome/fonts/**',

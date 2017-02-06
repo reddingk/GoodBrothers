@@ -5,7 +5,7 @@ components.component('gbSidenav', {
   },
 	controller: function ($scope, $window) {
     var ctrl = this;
-    ctrl.pages = [{"name":"home", "location":"home"},{"name":"services", "location":"services"}, {"name":"galleries", "location":"galleries"},{"name":"testimonies", "location":"testimonies"},{"name":"about us", "location":"aboutus"},{"name":"contact us", "location":"contactus"}];
+    ctrl.pages = [{"name":"services", "location":"app.services"}, {"name":"galleries", "location":"app.gallery"},{"name":"testimonies", "location":"app.testimonies"},{"name":"about us", "location":"app.aboutus"},{"name":"contact us", "location":"app.contactus"}];
 
     ctrl.isActive = function(id){
       return ($window.location.hash == '#'+id);

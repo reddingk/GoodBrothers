@@ -2,7 +2,7 @@
     <nav class="nav navbar-inverse" id="gb-main-nav" role="navigation" nav-hold>
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" ui-sref="app" data-menuanchor="home"><img class="nav-logo" alt="" src="imgs/Logo.png"></a>
+          <a class="navbar-brand" ui-sref="app" ui-sref="home"><img class="nav-logo" alt="" src="imgs/Logo.png"></a>
 
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="sr-only">Toggle navigation</span>
@@ -13,11 +13,11 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav" id="gb-inside-nav">
-            <li data-menuanchor="services"><a>Services</a></li>
-            <li data-menuanchor="galleries"><a>Galleries</a></li>
-            <li data-menuanchor="testimonies"><a>Testimonies</a></li>
-            <li data-menuanchor="aboutus"><a>About Us</a></li>
-            <li data-menuanchor="contactus"><a>Contact Us</a></li>
+            <li ui-sref="app.services" ui-sref-active="active"><a>Services</a></li>
+            <li ui-sref="app.gallery" ui-sref-active="active"><a>Galleries</a></li>
+            <li ui-sref="app.testimonies" ui-sref-active="active"><a>Testimonies</a></li>
+            <li ui-sref="app.aboutus" ui-sref-active="active"><a>About Us</a></li>
+            <li ui-sref="app.contactus" ui-sref-active="active"><a>Contact Us</a></li>
           </ul>
         </div>
       </div>

@@ -31,57 +31,64 @@ html, body {
   @media @mobile-screen { background: rgba(255,255,255,0.2);}
 }
 
-.mainBody {
-  height: 100%;
-  home {
+.mainBody-container {
+  min-height: 100%;
+  //overflow: hidden;
+  .mainBody {
     height: 100%;
-    width: 100%;
-    .section {
+    //overflow: hidden;
+    .page-container {
+      height: 100%;
+      width: 100%;
+      padding: 0px 20px;
+      min-height: 100vh;
+      &.content-page {
+        padding: 100px 120px 20px;
+        @media @mobile-screen { padding: 70px 10px 20px; }
+      }
+      .page-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        display: block;
+        padding-left: 50px;
+        color:@themeRed;
+      }
+    }
+    .test {   text-align: center; }
+    .bouncing-bubbles {
+      width: 50px;
+      height: 50px;
+      border: 1px rgba(0,0,0,0.5) solid;
+      border-radius: 50%;
+      background-color: @themeBlue;
       overflow: hidden;
-      .page-section {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        .page-container {
-          height: 100%;
-          width: 100%;
-          padding: 0px 20px;
-          &.content-page {
-            padding: 100px 120px 20px;
-            @media @mobile-screen { padding: 70px 10px 20px; }
-          }
-          .page-title {
-            font-size: 2.5rem;
-            font-weight: bold;
-            display: block;
-            padding-left: 50px;
-            color:@themeRed;
-          }
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      opacity: 0.3;
+    }
+
+    /*Page Navigation*/
+    &.anim-in-out {
+      &.ng-animate { visibility: hidden; }
+      &.anim-page {
+        &.anim-in {
+          visibility: visible;
+          -webkit-animation: 0.5s fadeInDownBig ease backwards;
+          animation: 0.5s fadeInDownBig ease backwards;
+          //animation-delay: 0.5s;
+        }
+        &.anim-out {
+          /*visibility: visible;
+          -webkit-animation:.5s fadeOut ease backwards;
+          animation:.5s fadeOut ease backwards;*/
+          display: none;
         }
       }
     }
-
-    .test {
-      text-align: center;
-    }
-  }
-  .bouncing-bubbles {
-    width: 50px;
-    height: 50px;
-    border: 1px rgba(0,0,0,0.5) solid;
-    border-radius: 50%;
-    background-color: @themeBlue;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    opacity: 0.3;
   }
 }
-
 // Navigation
 .nav-container {
   z-index: 100;
