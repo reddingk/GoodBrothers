@@ -6,10 +6,11 @@ directives.directive('isVisible', ['$window', function($window) {
       // get element position
       var elementPos = (attrs.voffset == undefined ? 0 : parseInt(attrs.voffset,10 ));
       var el = element[0];
-      while(el.offsetParent){
+      /*while(el.offsetParent){
         el = el.offsetParent;
         elementPos += el.offsetTop;
-      }
+      }*/
+      elementPos += el.offsetTop;
       angular.element($window).bind("scroll", function() {
         var windowp = angular.element($window)[0];
 
@@ -22,7 +23,7 @@ directives.directive('isVisible', ['$window', function($window) {
           }
         }
       });
-      
+
     }
   }
 }]);

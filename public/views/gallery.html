@@ -1,15 +1,18 @@
 <div class="page-container content-page gallery-page">
   <div class="page-title">Gallery</div>
 
-  <div class="gallery-container">
-    <div class="ctrl ctrl-left" ng-click="$ctrl.clientCtrl('left')"><i class="fa fa-angle-left"></i></div>
-    <div class="gallery-list">
-      <div class="gallery-list-container">
-        <div class="gallery-item" ng-repeat="img in $ctrl.images" ng-click="$ctrl.openImg(img, $event)"><div class="item-container"><img ng-src="{{img}}"></div></div>
+  <div class="page-content-container">
+    <div class="gallery-container">
+      <div class="ctrl ctrl-left" ng-click="$ctrl.clientCtrl('left')"><i class="fa fa-angle-left"></i></div>
+      <div class="gallery-list">
+        <div class="gallery-list-container">
+          <div class="gallery-item" ng-repeat="img in $ctrl.images" ng-click="$ctrl.openImg(img, $event)"><div class="item-container"><img ng-src="{{img}}"></div></div>
+        </div>
       </div>
+      <div class="ctrl ctrl-right" ng-click="$ctrl.clientCtrl('right')"><i class="fa fa-angle-right"></i></div>
     </div>
-    <div class="ctrl ctrl-right" ng-click="$ctrl.clientCtrl('right')"><i class="fa fa-angle-right"></i></div>
-  </div>
 
-  <div class="bouncing-bubbles" ng-repeat="n in $ctrl.buildArray(7) track by $index" random-motion></div>
+    <div class="truck-container" ng-include="$ctrl.truckFile" is-visible voffset="-1000"></div>
+  </div>
+  <!--<div class="bouncing-bubbles" ng-repeat="n in $ctrl.buildArray(7) track by $index" random-motion></div>-->
 </div>

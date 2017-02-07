@@ -1,6 +1,24 @@
 <div class="page-container content-page services-page">
   <div class="page-title">Services</div>
 
-
-  <div class="bouncing-bubbles" ng-repeat="n in $ctrl.buildArray(7) track by $index" random-motion></div>
+  <div class="page-content-container">
+    <div class="service-nav">
+      <div class="nav-ctrl left"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+      <div class="nav-item" ng-repeat="service in $ctrl.services" ng-click="$ctrl.changeSelected(service)" ng-class="{'active':$ctrl.isSelected(service)}">
+        <div class="service-icon"><i class="fa {{service.icon}}"></i></div>
+        <div class="service-text">{{service.section}}</div>
+      </div>
+      <div class="nav-ctrl right"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+    </div>
+    <div class="service-items">
+      <div class="item-container" ng-repeat="item in $ctrl.selectedService.packages" ng-animate-swap="$ctrl.selectedService">
+        <div class="item-title">{{item.title}}</div>
+        <div class="item-price">${{item.price}}</div>
+        <div class="item-details">
+          <div class="detail" ng-repeat="detail in item.details"><i class="fa fa-caret-right"></i><span>{{detail}}</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--<div class="bouncing-bubbles" ng-repeat="n in $ctrl.buildArray(7) track by $index" random-motion></div>-->
 </div>

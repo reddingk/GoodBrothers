@@ -2,7 +2,7 @@ GoodBrosSite.config(['$stateProvider', '$urlRouterProvider','$locationProvider',
       $stateProvider
       .state('app', {
         url: "/",
-        views: { 'content':{ component: 'cover' }  }
+        views: { 'content':{ component: 'home' }  }
       })
       .state('app.services', {
         url: "services",

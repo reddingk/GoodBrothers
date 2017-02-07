@@ -5,7 +5,7 @@ components.component('gallery', {
       // variables
       ctrl.images = [ "imgs/gallery/img1.jpg", "imgs/gallery/img2.jpg", "imgs/gallery/img3.jpg", "imgs/gallery/demo/d1.jpg", "imgs/gallery/demo/d2.jpg", "imgs/gallery/demo/d3.jpg", "imgs/gallery/demo/d4.png" ];
       var selectedImg = "";
-
+      ctrl.truckFile = "views/_truck.html";
       // Functions
       ctrl.clientCtrl = function(direction) {
         var objectWidth = ($('.gallery-item')[0].offsetWidth + 20);
@@ -22,7 +22,7 @@ components.component('gallery', {
       ctrl.buildArray = function(num) {
         return new Array(num);
       }
-      
+
       ctrl.openImg = function(img, ev){
         selectedImg = img;
         $mdDialog.show({
