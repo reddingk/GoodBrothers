@@ -1,7 +1,8 @@
 .aboutus-page {
   .about-container {
     //height: 80%;
-    height: 500px;
+    height: 600px;
+    @media @mobile-screen { height: initial;}
     .about-item {
       display: -webkit-box;
       display: -moz-box;
@@ -32,6 +33,7 @@
             height: 30px;
             text-align: center;
             background: rgba(0,0,0,1);
+            border-radius: 50%;
             padding: 3px;
             transition: all .5s ease;
             i { color: rgba(255,255,255,1); transition: all .5s ease;}
@@ -70,6 +72,8 @@
             -webkit-animation: 1.5s fadeIn ease backwards;
             animation: 1.5s fadeIn ease backwards;
           }
+
+          @media @mobile-screen { font-size: 1rem; line-height: 1.5rem; }
         }
       }
       .about-img {
@@ -78,7 +82,7 @@
         border-left: 1px solid rgba(0,0,0,1);
         background-color: rgba(0,0,0,1);
 
-        @media @mobile-screen { display: hidden; }
+        @media @mobile-screen { display: block; width: 100%; }
         img {
           height: 100%;
           min-width: 100%;
@@ -86,6 +90,7 @@
           transition: all 1s ease;
           position: relative;
 
+          @media @mobile-screen { width: 100%; height: inherit;}
           &.fadeIn-add-active {
             -webkit-animation: 1.5s fadeIn ease backwards;
             animation: 1.5s fadeIn ease backwards;

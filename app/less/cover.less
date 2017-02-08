@@ -6,6 +6,7 @@
 
     width: 100%;
     text-align: center;
+    overflow-y: hidden;
     .cover-img {
       width: 25%;
       display: inline-block;
@@ -36,6 +37,7 @@
         width: 400px;
         margin: 0 auto;
         margin-top: 10px;
+        @media @mobile-screen { width: 100%; }
         .top{
           font-size: 3rem;
           display: block;
@@ -68,35 +70,18 @@
             display: inline-block;
             i { color: rgba(255,255,255,1); font-size: 1.5rem;}
           }
-          .info { display: inline-block; font-weight: bold; text-transform: uppercase; font-size: 1.5rem;}
+          .info {
+            display: inline-block;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            @media @mobile-screen { display: block;}
+          }
 
-          &+.contact-item { margin-left: 20px; }
+          &+.contact-item { margin-left: 20px; @media @mobile-screen { margin: 0; }}
         }
       }
     }
   }
 
-  .scroll-instruction {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    z-index: 5;
-    height: 50px;
-    width: 100px;
-    transform: translateX(-50%);
-    background: rgba(255,255,255,0.9);
-    text-align: center;
-    padding-top: 10px;
-    overflow: hidden;
-    border-radius: 90px 90px 0 0;
-     -moz-border-radius: 90px 90px 0 0;
-     -webkit-border-radius: 90px 90px 0 0;
-
-    i {
-      font-size: 50px;
-      color: rgba(0,0,0,1);
-      -webkit-animation: 3s bounce infinite;
-      animation: 3s bounce infinite;
-    }
-  }
 }

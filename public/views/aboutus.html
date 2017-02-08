@@ -1,17 +1,19 @@
 <div class="page-container content-page aboutus-page">
   <div class="page-title">About Us</div>
 
-  <div class="about-container">
-    <div class="about-item">
-      <div class="about-content">
-        <div class="about-nav">
-          <div class="nav-item" ng-repeat="item in $ctrl.content" ng-click="$ctrl.changeSelected(item)" ng-class="{'active': $ctrl.isActive(item)}"><i class="fa {{item.icon}}" aria-hidden="true"></i></div>
+  <div class="page-content-container">
+    <div class="about-container">
+      <div class="about-item">
+        <div class="about-content">
+          <div class="about-nav">
+            <div class="nav-item" ng-repeat="item in $ctrl.content" ng-click="$ctrl.changeSelected(item)" ng-class="{'active': $ctrl.isActive(item)}"><i class="fa {{item.icon}}" aria-hidden="true"></i></div>
+          </div>
+          <div class="selected-title" switch-animation="selectedItem" sin="flipIn">{{$ctrl.selected.title}}</div>
+          <div class="selected-content" switch-animation="selectedItem" sin="fadeIn">{{$ctrl.selected.content}}</div>
         </div>
-        <div class="selected-title" switch-animation="selectedItem" sin="flipIn">{{$ctrl.selected.title}}</div>
-        <div class="selected-content" switch-animation="selectedItem" sin="fadeIn">{{$ctrl.selected.content}}</div>
+        <div class="about-img"><img ng-src="{{$ctrl.selected.img}}" switch-animation="selectedItem" sin="fadeIn"></div>
       </div>
-      <div class="about-img"><img ng-src="{{$ctrl.selected.img}}" switch-animation="selectedItem" sin="fadeIn"></div>
     </div>
+    <!--<div class="bouncing-bubbles" ng-repeat="n in $ctrl.buildArray(7) track by $index" random-motion></div>-->
   </div>
-  <!--<div class="bouncing-bubbles" ng-repeat="n in $ctrl.buildArray(7) track by $index" random-motion></div>-->
 </div>

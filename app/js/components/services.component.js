@@ -1,6 +1,6 @@
 components.component('services', {
   bindings: {},
-	controller: function () {
+	controller: function ($document) {
       var ctrl = this;
       // variables
       ctrl.services = [
@@ -51,6 +51,11 @@ components.component('services', {
       }
       ctrl.isSelected = function(item){
         return ctrl.selectedService == item;
+      }
+
+      ctrl.scrollToSection = function(section){
+        var sectionScroll = angular.element(document.getElementById(section));
+        $document.scrollToElement(sectionScroll, 0, 1000);
       }
    },
    templateUrl: 'views/services.html'

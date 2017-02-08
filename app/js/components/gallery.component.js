@@ -1,11 +1,11 @@
 components.component('gallery', {
   bindings: {},
-	controller: function ($scope, $timeout, $mdDialog) {
+	controller: function ($scope, $timeout, $mdDialog, $document) {
       var ctrl = this;
       // variables
       ctrl.images = [ "imgs/gallery/img1.jpg", "imgs/gallery/img2.jpg", "imgs/gallery/img3.jpg", "imgs/gallery/demo/d1.jpg", "imgs/gallery/demo/d2.jpg", "imgs/gallery/demo/d3.jpg", "imgs/gallery/demo/d4.png" ];
       var selectedImg = "";
-      ctrl.truckFile = "views/_truck.html";
+      ctrl.truckFile = "views/svgs/_truck.html";
       // Functions
       ctrl.clientCtrl = function(direction) {
         var objectWidth = ($('.gallery-item')[0].offsetWidth + 20);
@@ -21,6 +21,10 @@ components.component('gallery', {
       }
       ctrl.buildArray = function(num) {
         return new Array(num);
+      }
+      ctrl.scrollToSection = function(section){
+        var sectionScroll = angular.element(document.getElementById(section));
+        $document.scrollToElement(sectionScroll, 0, 1000);
       }
 
       ctrl.openImg = function(img, ev){

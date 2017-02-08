@@ -13,11 +13,12 @@ directives.directive('randomMotion', ['$timeout', function($timeout) {
           var velY = (Math.random() * maxVelocity);
           var timestamp = null;
 
+          var borderX = element[0].clientWidth + 5;
+          var borderY = element[0].clientHeight + 5;
+          
           // Move Object
           (function tick() {
             var now = new Date().getTime();
-            var borderX = element[0].clientWidth + 5;
-            var borderY = element[0].clientHeight + 5;
 
             var maxX = parentContainer.clientWidth - borderX;
             var maxY = parentContainer.clientHeight - borderY;

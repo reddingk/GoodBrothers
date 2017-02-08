@@ -1,6 +1,6 @@
 components.component('aboutus', {
   bindings: {},
-	controller: function ($scope, $timeout) {
+	controller: function ($scope, $timeout,$document) {
       var ctrl = this;
       // variables
       ctrl.content = [
@@ -22,6 +22,10 @@ components.component('aboutus', {
       }
       ctrl.buildArray = function(num) {
         return new Array(num);
+      }
+      ctrl.scrollToSection = function(section){
+        var sectionScroll = angular.element(document.getElementById(section));
+        $document.scrollToElement(sectionScroll, 0, 1000);
       }
    },
    templateUrl: 'views/aboutus.html'

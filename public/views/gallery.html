@@ -12,7 +12,10 @@
       <div class="ctrl ctrl-right" ng-click="$ctrl.clientCtrl('right')"><i class="fa fa-angle-right"></i></div>
     </div>
 
-    <div class="truck-container" ng-include="$ctrl.truckFile" is-visible voffset="-1000"></div>
+    <div class="truck-cover">
+      <div class="truck-container" ng-include="$ctrl.truckFile" is-visible voffset="-1000"></div>
+    </div>
+    <div class="scroll-instruction right" ng-click="$ctrl.scrollToSection('testimonies')"><i class="fa fa-angle-down" aria-hidden="true"></i></div>  
   </div>
   <!--<div class="bouncing-bubbles" ng-repeat="n in $ctrl.buildArray(7) track by $index" random-motion></div>-->
 </div>

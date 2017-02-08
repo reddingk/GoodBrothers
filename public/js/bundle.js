@@ -2,10 +2,10 @@
 
 var routes = angular.module('routes', ['ui.router']);
 var directives = angular.module('directives', []);
-var components = angular.module('components', ['ui.bootstrap', 'ngAnimate', 'ngSanitize']);
+var components = angular.module('components', ['ui.bootstrap', 'ngAnimate', 'ngSanitize', 'duScroll']);
 var services = angular.module('services',[]);
 
-var GoodBrosSite = angular.module('GoodBrosSite', ['ngMaterial', 'ngAnimate', 'fullPage.js', 'anim-in-out', 'ui.router', 'directives', 'components',	'services', 'routes']);
+var GoodBrosSite = angular.module('GoodBrosSite', ['ngMaterial', 'ngAnimate', 'anim-in-out','duScroll', 'ui.router', 'directives', 'components',	'services', 'routes']);
 
 GoodBrosSite.config(['$stateProvider', '$urlRouterProvider','$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
       $stateProvider
@@ -51,12 +51,12 @@ GoodBrosSite.config(['$stateProvider', '$urlRouterProvider','$locationProvider',
       });
 
       $urlRouterProvider.otherwise('/');
-      //$locationProvider.html5Mode(true);
+      $locationProvider.html5Mode(true);
     }]);
 
 components.component('aboutus', {
   bindings: {},
-	controller: function ($scope, $timeout) {
+	controller: function ($scope, $timeout,$document) {
       var ctrl = this;
       // variables
       ctrl.content = [
@@ -78,6 +78,10 @@ components.component('aboutus', {
       }
       ctrl.buildArray = function(num) {
         return new Array(num);
+      }
+      ctrl.scrollToSection = function(section){
+        var sectionScroll = angular.element(document.getElementById(section));
+        $document.scrollToElement(sectionScroll, 0, 1000);
       }
    },
    templateUrl: 'views/aboutus.html'
@@ -104,11 +108,15 @@ components.component('all', {
 
 components.component('contactus', {
   bindings: {},
-	controller: function () {
+	controller: function ($document) {
       var ctrl = this;
       // variables
       ctrl.buildArray = function(num) {
         return new Array(num);
+      }
+      ctrl.scrollToSection = function(section){
+        var sectionScroll = angular.element(document.getElementById(section));
+        $document.scrollToElement(sectionScroll, 0, 1000);
       }
    },
    templateUrl: 'views/contactus.html'
@@ -116,13 +124,18 @@ components.component('contactus', {
 
 components.component('cover', {
   bindings: {},
-	controller: function () {
+	controller: function ($document) {
       var ctrl = this;
       // variables
       ctrl.title = "Good Brothers Mobile Detailing";
       ctrl.img = "imgs/dirty2.png"
       ctrl.subtitle = "it's easier when we do it";
       ctrl.contacts = {"phone":"302-566-5960", "email":"goodbrothersmobiledetailing@gmail.com"};
+
+      ctrl.scrollToSection = function(section){
+        var sectionScroll = angular.element(document.getElementById(section));
+        $document.scrollToElement(sectionScroll, 0, 1000);
+      }
    },
    templateUrl: 'views/cover.html'
 });
@@ -140,12 +153,12 @@ components.component('gbFooter', {
 
 components.component('gallery', {
   bindings: {},
-	controller: function ($scope, $timeout, $mdDialog) {
+	controller: function ($scope, $timeout, $mdDialog, $document) {
       var ctrl = this;
       // variables
       ctrl.images = [ "imgs/gallery/img1.jpg", "imgs/gallery/img2.jpg", "imgs/gallery/img3.jpg", "imgs/gallery/demo/d1.jpg", "imgs/gallery/demo/d2.jpg", "imgs/gallery/demo/d3.jpg", "imgs/gallery/demo/d4.png" ];
       var selectedImg = "";
-      ctrl.truckFile = "views/_truck.html";
+      ctrl.truckFile = "views/svgs/_truck.html";
       // Functions
       ctrl.clientCtrl = function(direction) {
         var objectWidth = ($('.gallery-item')[0].offsetWidth + 20);
@@ -161,6 +174,10 @@ components.component('gallery', {
       }
       ctrl.buildArray = function(num) {
         return new Array(num);
+      }
+      ctrl.scrollToSection = function(section){
+        var sectionScroll = angular.element(document.getElementById(section));
+        $document.scrollToElement(sectionScroll, 0, 1000);
       }
 
       ctrl.openImg = function(img, ev){
@@ -198,8 +215,13 @@ components.component('gbHeader', {
 	require: {
       parent: '^all'
   },
-	controller: function ($scope, $location) {
+	controller: function ($scope, $location, $document) {
     var ctrl = this;
+
+    ctrl.scroll = function(eID){
+      var scrollElement = angular.element(document.getElementById(eID));
+      $document.scrollToElementAnimated(scrollElement);
+    }
 
    },
    templateUrl: 'views/_header.html'
@@ -227,7 +249,7 @@ components.component('home', {
 
 components.component('services', {
   bindings: {},
-	controller: function () {
+	controller: function ($document) {
       var ctrl = this;
       // variables
       ctrl.services = [
@@ -279,6 +301,11 @@ components.component('services', {
       ctrl.isSelected = function(item){
         return ctrl.selectedService == item;
       }
+
+      ctrl.scrollToSection = function(section){
+        var sectionScroll = angular.element(document.getElementById(section));
+        $document.scrollToElement(sectionScroll, 0, 1000);
+      }
    },
    templateUrl: 'views/services.html'
 });
@@ -301,7 +328,7 @@ components.component('gbSidenav', {
 
 components.component('testimonies', {
   bindings: {},
-	controller: function ($scope, $timeout) {
+	controller: function ($scope, $timeout,$document) {
       var ctrl = this;
       // variables
       ctrl.allItems = [
@@ -326,6 +353,8 @@ components.component('testimonies', {
         "current":{"class":"selected", "status":"active", "id":-1,"name":"", "content":""},
         "after":{"class":"after", "status":"inactive", "name":"", "content":""}
       };
+
+      ctrl.bounceFile = "views/svgs/_bounce.html";
 
       ctrl.setDisplay = function(before, current, next){
         var before_obj = {"class":"before", "status":"inactive", "name":"", "content":""};
@@ -412,11 +441,14 @@ components.component('testimonies', {
       ctrl.checkCtrlSelected = function(id){
         return (ctrl.currentId == id);
       }
-      
+
       ctrl.buildArray = function(num) {
         return new Array(num);
       }
-
+      ctrl.scrollToSection = function(section){
+        var sectionScroll = angular.element(document.getElementById(section));
+        $document.scrollToElement(sectionScroll, 0, 1000);
+      }
       // Set Initial Display
       ctrl.setDisplay(null, (ctrl.allItems.length > 0 ? ctrl.allItems[0] : null), (ctrl.allItems.length > 1 ? ctrl.allItems[1] : null) );
    },
@@ -478,11 +510,12 @@ directives.directive('randomMotion', ['$timeout', function($timeout) {
           var velY = (Math.random() * maxVelocity);
           var timestamp = null;
 
+          var borderX = element[0].clientWidth + 5;
+          var borderY = element[0].clientHeight + 5;
+          
           // Move Object
           (function tick() {
             var now = new Date().getTime();
-            var borderX = element[0].clientWidth + 5;
-            var borderY = element[0].clientHeight + 5;
 
             var maxX = parentContainer.clientWidth - borderX;
             var maxY = parentContainer.clientHeight - borderY;

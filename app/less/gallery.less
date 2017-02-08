@@ -3,13 +3,12 @@
   display: flex;
   flex-flow: column;
   .page-content-container {
+    position: relative;
     .greyGradient;
     height: 100%;
     width: 100%;
     flex: 1 1 auto;
     font-family: 'Quicksand', sans-serif;
-    border-top: 1px solid rgba(0,0,0,1);
-    border-bottom: 1px solid rgba(0,0,0,1);
     overflow-x: hidden;
     .gallery-container {
       height: 80%;
@@ -26,6 +25,7 @@
       position: relative;
       z-index: 5;
 
+      @media @mobile-screen { padding: 30px 5px 10px; }
       .ctrl {
         width: 10%;
         overflow: hidden;
@@ -33,6 +33,7 @@
         padding-top: 30px;
         &.ctrl-left { text-align: left;}
         &.ctrl-right { text-align: right; }
+        @media @mobile-screen { font-size: 100px; }
       }
       .gallery-list {
         width: 80%;
@@ -40,6 +41,7 @@
         height: 300px;
         padding: 10px;
 
+        @media @mobile-screen { height: 200px; }
         .gallery-list-container {
           overflow: hidden;
           white-space:nowrap;
@@ -56,6 +58,7 @@
             background-color: rgba(255,255,255,1);
             padding: 20px 20px 50px 20px;
             border: 1px solid rgba(0,0,0,1);
+            @media @mobile-screen { width: 200px;}
             .item-container{
               width: 100%;
               height: 100%;
@@ -69,16 +72,21 @@
       }
     }
 
-    .truck-container {
-      /*&:hover {
-        -webkit-animation:3.5s slideOutRight ease;
-        animation:3.5s slideOutRight ease;
-      }*/
-      visibility: hidden;
-      &.screenVisible {
-        visibility: visible;
-        -webkit-animation:2.5s slideInLeft ease;
-        animation:2.5s slideInLeft ease;
+    .truck-cover {
+      background: rgba(200,200,200,0.3);
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      .truck-container {
+        visibility: hidden;
+        padding: 10px 0px;
+
+        &.screenVisible {
+          visibility: visible;
+          -webkit-animation:2.5s slideInLeft ease;
+          animation:2.5s slideInLeft ease;
+        }
       }
     }
   }

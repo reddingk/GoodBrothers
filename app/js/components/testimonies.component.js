@@ -1,6 +1,6 @@
 components.component('testimonies', {
   bindings: {},
-	controller: function ($scope, $timeout) {
+	controller: function ($scope, $timeout,$document) {
       var ctrl = this;
       // variables
       ctrl.allItems = [
@@ -25,6 +25,8 @@ components.component('testimonies', {
         "current":{"class":"selected", "status":"active", "id":-1,"name":"", "content":""},
         "after":{"class":"after", "status":"inactive", "name":"", "content":""}
       };
+
+      ctrl.bounceFile = "views/svgs/_bounce.html";
 
       ctrl.setDisplay = function(before, current, next){
         var before_obj = {"class":"before", "status":"inactive", "name":"", "content":""};
@@ -111,11 +113,14 @@ components.component('testimonies', {
       ctrl.checkCtrlSelected = function(id){
         return (ctrl.currentId == id);
       }
-      
+
       ctrl.buildArray = function(num) {
         return new Array(num);
       }
-
+      ctrl.scrollToSection = function(section){
+        var sectionScroll = angular.element(document.getElementById(section));
+        $document.scrollToElement(sectionScroll, 0, 1000);
+      }
       // Set Initial Display
       ctrl.setDisplay(null, (ctrl.allItems.length > 0 ? ctrl.allItems[0] : null), (ctrl.allItems.length > 1 ? ctrl.allItems[1] : null) );
    },
