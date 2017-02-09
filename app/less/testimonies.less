@@ -1,8 +1,7 @@
 .testimonies-page {
-
+  .blueGradient;
   .page-content-container {
-
-    .blueGradient;
+    //.blueGradient;
     height: 100%;
     width: 100%;
     flex: 1 1 auto;
@@ -17,6 +16,7 @@
       height: 500px;
       z-index: 2;
       color: rgba(255,255,255,1);
+      background: rgba(200,200,200,0.3);
       @media @mobile-screen { height: 600px;}
       .testimonies-item {
         display: inline-block;
@@ -78,13 +78,14 @@
           bottom: 10px;
           left: 50%;
           transform: translateX(-50%);
+          z-index: 1;
           .select-item {
             width: 10px;
             height: 10px;
             border: 1px solid rgba(255,255,255,1);
             border-radius: 50%;
             display: inline-block;
-
+            position: relative;
             &+.select-item { margin-left: 5px; }
             &.active { background: rgba(255,255,255,1); }
           }
@@ -95,7 +96,8 @@
           left: 0;
           width: 100%;
           height: 50px;
-          background: rgba(200,200,200,0.3);
+          z-index: 0;
+          //background: rgba(200,200,200,0.3);
         }
       }
     }

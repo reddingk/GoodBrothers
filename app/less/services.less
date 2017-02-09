@@ -1,12 +1,11 @@
 .services-page {
   min-height: 100vh;
-  //background-color: @themeGreyFade;
   display: flex;
   flex-flow: column;
+  .redGradient;
+
   .page-content-container {
-    //background-color: @themeRedFade;
-    .redGradient;
-    //height: 100%;
+    //.redGradient;
     width: 100%;
     //flex: 1 1 auto;
     font-family: 'Quicksand', sans-serif;
@@ -25,7 +24,7 @@
       display: flex;
       justify-content: space-between;
       padding: 5px 15%;
-      border-bottom: 2px solid rgba(0,0,0,1);
+      //border-bottom: 2px solid rgba(0,0,0,1);
       background: rgba(200,200,200,0.3);
 
       @media @mobile-screen {  padding: 5px; overflow-x: scroll; }
@@ -36,7 +35,8 @@
         text-align: center;
         height: 100%;
         padding-top: 30px;
-        display: inline-block;
+        //display: inline-block;
+        display: none;
         &.left { left:0; }
         &.right { right: 0; }
         i { font-size: 50px;}
@@ -51,19 +51,33 @@
         color: rgba(0,0,0,0.6);
         overflow: hidden;
         .service-icon {
-          i { font-size: 50px;}
+          i { font-size: 40px;}
         }
-        .service-text { font-size: 1.5rem;}
+        .service-text { font-size: 1.3rem;}
         &:hover {  color: @themeOffBlack;  }
         &.active { color: rgba(234,221,195,1); &:hover { color: rgba(234,221,195,1);} }
 
         @media @mobile-screen {
-          min-width: 150px;
-          width: 150px;
+          min-width: 100px;
+          width: 100px;
 
+          .service-icon { i { font-size: 30px; }}
+          .service-text { font-size: 1rem; }
           &+.nav-item { margin-left: 10px; }
         }
       }
+    }
+    .mobile-instructions {
+      display: none;
+      width: 100%;
+      padding: 5px 0px;
+      text-align: center;
+      color: rgba(0,0,0,1);
+      background: rgba(255,255,255,0.5);
+      font-size: 1.3rem;
+      font-weight: bold;
+      span { padding: 0px 10px; }
+      @media @mobile-screen { display: block;}
     }
     .service-items {
       padding: 50px 5%;
@@ -86,7 +100,7 @@
         overflow: hidden;
         @media @mobile-screen { width: 300px; white-space: normal; }
         .item-title {
-          font-size: 1.8rem;
+          font-size: 1.5rem;
           font-weight: bold;
           text-align: center;
           color: rgba(255,255,255,1);
@@ -95,7 +109,7 @@
         }
         .item-price {
           text-align: center;
-          font-size: 1.7rem;
+          font-size: 1.5rem;
           font-weight: bold;
           padding: 10px 5px 0px;
           color: rgba(255,255,255,1);
@@ -105,11 +119,11 @@
           background: rgba(255,255,255,1);
           padding-top:10px;
           text-align: left;
-          font-size: 1.2rem;
+          font-size: 1rem;
           text-transform: capitalize;
           .detail {
             display: block;
-            padding: 10px;
+            padding: 5px 10px;
             span { display: inline-block;}
             i { margin: 0px 10px; display: inline-block;}
           }

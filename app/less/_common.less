@@ -49,6 +49,7 @@ html, body {
   top:0;
   left:0;
 
+  &.screenPass { background: rgba(255,255,255,0.9);}
   @media @mobile-screen { background: rgba(255,255,255,0.2);}
 }
 
@@ -66,16 +67,19 @@ html, body {
       &.content-page {
         //padding: 100px 120px 20px;
         padding: 100px 0px 20px;
+        position: relative;
 
-        @media @mobile-screen { padding: 70px 10px 20px; }
+        @media @mobile-screen { padding: 70px 0px 20px; }
       }
       .page-title {
         font-size: 2.5rem;
         font-weight: bold;
         display: block;
         padding-left: 50px;
-        color:@themeRed;
-        @media @mobile-screen { text-align: center;}
+        text-align: center;
+        //color:@themeRed;
+        color: rgba(50,50,50,1);
+        @media @mobile-screen { }
       }
       .page-content-container {
         margin-top: 30px;
@@ -159,6 +163,13 @@ html, body {
       &.left { left: 20%; transform: translateX(-20%);}
       &.right { left: 80%; transform: translateX(-80%); }
       &.wallLeft { left: 0; top: 70%; transform: translate(0, -70%); border-radius: 0 90px 90px 0; height: 100px; width: 50px; text-align: left; padding-top: 30px;}
+
+      @media @mobile-screen {
+        height: 25px;
+        width: 50px;
+        i { font-size: 25px; }
+        &.wallLeft { height: 50px; width: 25px; padding-top: 20px; }
+      }
     }
 
     /*Page Navigation*/

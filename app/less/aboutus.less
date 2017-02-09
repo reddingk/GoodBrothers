@@ -2,7 +2,8 @@
   .about-container {
     //height: 80%;
     height: 600px;
-    @media @mobile-screen { height: initial;}
+    padding: 0px 30px;
+    @media @mobile-screen { height: initial; padding: 0px; }
     .about-item {
       display: -webkit-box;
       display: -moz-box;
@@ -48,7 +49,7 @@
           font-size: 2rem;
           font-weight: bold;
           margin-top: 10px;
-          background-color: @themeBlue;
+          background-color: @themeTeal;
           padding: 0px 5px;
           &.bounceIn-add-active {
             -webkit-animation: 1.5s bounceInRight ease backwards;
