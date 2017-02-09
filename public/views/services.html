@@ -13,10 +13,12 @@
     <div class="mobile-instructions"><i class="fa fa-chevron-left"></i><span>SCROLL</span><i class="fa fa-chevron-right"></i></div>
     <div class="service-items">
       <div class="item-container" ng-repeat="item in $ctrl.selectedService.packages" ng-animate-swap="$ctrl.selectedService">
-        <div class="item-title">{{item.title}}</div>
-        <div class="item-price">${{item.price}}</div>
-        <div class="item-details">
-          <div class="detail" ng-repeat="detail in item.details"><i class="fa fa-caret-right"></i><span>{{detail}}</span></div>
+        <div class="item-holder">
+          <div class="item-title">{{item.title}}</div>
+          <div class="item-price">${{item.price}}</div>
+          <div class="item-details">
+            <div class="detail" ng-repeat="detail in item.details"><i class="fa fa-caret-right"></i><span>{{detail}}</span></div>
+          </div>
         </div>
       </div>
     </div>

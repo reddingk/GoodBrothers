@@ -3,7 +3,7 @@ components.component('gallery', {
 	controller: function ($scope, $timeout, $mdDialog, $document) {
       var ctrl = this;
       // variables
-      ctrl.images = [ "imgs/gallery/img1.jpg", "imgs/gallery/img2.jpg", "imgs/gallery/img3.jpg", "imgs/gallery/demo/d1.jpg", "imgs/gallery/demo/d2.jpg", "imgs/gallery/demo/d3.jpg", "imgs/gallery/demo/d4.png" ];
+      ctrl.images = [ "imgs/gallery/img1.jpg", "imgs/gallery/img2.jpg", "imgs/gallery/img3.jpg", "imgs/gallery/img4.jpg", "imgs/gallery/img5.jpg", "imgs/gallery/img6.jpg", "imgs/gallery/img7.jpg", "imgs/gallery/img8.jpg", "imgs/gallery/img9.jpg","imgs/gallery/img10.jpg", "imgs/gallery/img11.jpg"];
       var selectedImg = "";
       ctrl.truckFile = "views/svgs/_truck.html";
       // Functions

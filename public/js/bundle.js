@@ -110,6 +110,11 @@ components.component('contactus', {
   bindings: {},
 	controller: function ($document) {
       var ctrl = this;
+      ctrl.contacts = {"phone":"302-566-5960", "email":"goodbrothersmobiledetailing@gmail.com"};
+      ctrl.follow = [
+        {"title":"facebook", "icon":"fa-facebook","url":"https://www.facebook.com/profile.php?id=100011333514973"},
+        {"title":"instagram", "icon":"fa-instagram","url":"https://www.instagram.com/goodbrothers_mobiledetailing"}
+      ];
       // variables
       ctrl.buildArray = function(num) {
         return new Array(num);
@@ -156,7 +161,7 @@ components.component('gallery', {
 	controller: function ($scope, $timeout, $mdDialog, $document) {
       var ctrl = this;
       // variables
-      ctrl.images = [ "imgs/gallery/img1.jpg", "imgs/gallery/img2.jpg", "imgs/gallery/img3.jpg", "imgs/gallery/demo/d1.jpg", "imgs/gallery/demo/d2.jpg", "imgs/gallery/demo/d3.jpg", "imgs/gallery/demo/d4.png" ];
+      ctrl.images = [ "imgs/gallery/img1.jpg", "imgs/gallery/img2.jpg", "imgs/gallery/img3.jpg", "imgs/gallery/img4.jpg", "imgs/gallery/img5.jpg", "imgs/gallery/img6.jpg", "imgs/gallery/img7.jpg", "imgs/gallery/img8.jpg", "imgs/gallery/img9.jpg","imgs/gallery/img10.jpg", "imgs/gallery/img11.jpg"];
       var selectedImg = "";
       ctrl.truckFile = "views/svgs/_truck.html";
       // Functions
@@ -222,7 +227,10 @@ components.component('gbHeader', {
       var scrollElement = angular.element(document.getElementById(eID));
       $document.scrollToElementAnimated(scrollElement);
     }
-
+    $("#gb-inside-nav a").on("click", function () {
+      //$("#gb-inside-nav").collapse('hide');
+      $('.navbar-toggle').click();
+    });
    },
    templateUrl: 'views/_header.html'
 });
@@ -233,16 +241,9 @@ components.component('home', {
       var ctrl = this;
       // variables
       ctrl.title = "Home";
+      ctrl.spaceImgs = ["imgs/full1.jpg","imgs/full2.jpg","imgs/full3.jpg"];
 
 
-      ctrl.mainOptions = {
-        anchors: ['home', 'services', 'galleries', 'testimonies', 'aboutus', 'contactus'],
-			  menu: '#gb-inside-nav',
-
-        //Accessibility
-        keyboardScrolling: true,
-        recordHistory: true
-      }
    },
    templateUrl: 'views/home.html'
 });

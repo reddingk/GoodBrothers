@@ -46,8 +46,8 @@
           overflow: hidden;
           white-space:nowrap;
           padding: 10px;
-          border-left: 5px solid @themeBlue;
-          border-right: 5px solid @themeBlue;
+          border-left: 5px solid rgba(0,0,0,1);
+          border-right: 5px solid rgba(0,0,0,1);
           height: 100%;
           width: 100%;
 
@@ -99,4 +99,6 @@ md-dialog {
   .pop-img {
     width: 100%;
   }
+
+  &.md-dialog-fullscreen { min-height: initial; }
 }
