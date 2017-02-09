@@ -333,8 +333,8 @@ components.component('testimonies', {
       var ctrl = this;
       // variables
       ctrl.allItems = [
-        {"id":0, "name":"Test 0", "content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
-        {"id":1, "name":"Test 1", "content":"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."},
+        {"id":0, "name":"S. Morris", "content":"S/O to my cuzzo jay Jay Douglas Goodbrothers Mobiledetailing for doing such an amazing job on my car today!!!! ☺️"},
+        {"id":1, "name":"H. Boogie", "content":"Goodbrothers Mobiledetailing they are the cheapest around with the best work! "},
         {"id":2, "name":"Test 2", "content":"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."},
         {"id":3, "name":"Test 3", "content":"Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."},
         {"id":4, "name":"Test 4", "content":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."},
