@@ -1,25 +1,27 @@
-<div class="page-container cover-page anim-swap">
-  <div class="cover-content">
-    <div class="cover-img"><img ng-src="{{$ctrl.img}}"></div>
-    <div class="cover-mask"></div>
+<div class="section-container cover">
+  <div class="page-container cover-page anim-swap">
+    <div class="cover-content-container">
+      <div class="cover-img"><img ng-src="{{$ctrl.img}}"></div>
+      <div class="cover-mask"></div>
 
-    <div class="title cover-content">
-      <div class="top"><span>G</span>ood <span>B</span>rothers</div>
-      <div class="bottom">Mobile Detailing</div>
+      <div class="title cover-content">
+        <div class="top"><span>G</span>ood <span>B</span>rothers</div>
+        <div class="bottom">Mobile Detailing</div>
+      </div>
+
+      <div class="subtitle cover-content">"{{$ctrl.subtitle}}"</div>
+      <div class="contact cover-content">
+        <div class="contact-item">
+          <div class="icon-container"><i class="fa fa-volume-control-phone"></i></div>
+          <div class="info">{{$ctrl.contacts.phone}}</div>
+        </div>
+        <div class="contact-item">
+          <div class="icon-container"><i class="fa fa-envelope"></i></div>
+          <div class="info">{{$ctrl.contacts.email}}</div>
+        </div>
+      </div>
     </div>
 
-    <div class="subtitle cover-content">"{{$ctrl.subtitle}}"</div>
-    <div class="contact cover-content">
-      <div class="contact-item">
-        <div class="icon-container"><i class="fa fa-volume-control-phone"></i></div>
-        <div class="info">{{$ctrl.contacts.phone}}</div>
-      </div>
-      <div class="contact-item">
-        <div class="icon-container"><i class="fa fa-envelope"></i></div>
-        <div class="info">{{$ctrl.contacts.email}}</div>
-      </div>
-    </div>
+    <div class="scroll-instruction" ng-click="$ctrl.scrollToSection('services')"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
   </div>
-
-  <div class="scroll-instruction" ng-click="$ctrl.scrollToSection('services')"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
 </div>

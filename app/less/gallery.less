@@ -12,7 +12,7 @@
     overflow-x: hidden;
     .gallery-container {
       height: 80%;
-      padding: 30px 50px 10px;
+      padding: 30px 50px 300px;
       overflow: hidden;
       display: -webkit-box;
       display: -moz-box;
@@ -25,12 +25,13 @@
       position: relative;
       z-index: 5;
 
-      @media @mobile-screen { padding: 30px 5px 10px; }
+      @media @mobile-screen { padding: 30px 5px 300px; }
       .ctrl {
         width: 10%;
         overflow: hidden;
         font-size: 150px;
         padding-top: 30px;
+        color: rgba(255,255,255,1);
         &.ctrl-left { text-align: left;}
         &.ctrl-right { text-align: right; }
         @media @mobile-screen { font-size: 100px; }
@@ -46,8 +47,8 @@
           overflow: hidden;
           white-space:nowrap;
           padding: 10px;
-          border-left: 5px solid rgba(0,0,0,1);
-          border-right: 5px solid rgba(0,0,0,1);
+          border-left: 5px solid rgba(255,255,255,1);
+          border-right: 5px solid rgba(255,255,255,1);
           height: 100%;
           width: 100%;
 

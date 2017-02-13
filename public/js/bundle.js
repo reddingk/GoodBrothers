@@ -255,42 +255,19 @@ components.component('services', {
       // variables
       ctrl.services = [
         {
-          "section":"Hand Wash",
-          "icon":"fa-hand-paper-o",
-          "packages":[
-            {"title":"Hand Wash Package 1", "price":"20", "details":["detail 1", "detail 2", "detail 3"]},
-            {"title":"Hand Wash Package 2", "price":"40", "details":["detail 1", "detail 2", "detail 3", "detail 4", "detail 5", "detail 6"]},
-            {"title":"Hand Wash Package 3", "price":"60", "details":["detail 1", "detail 2", "detail 3 with more text", "detail 4", "detail 5", "detail 6", "detail 7 with more text", "detail 8"]}
-          ]
+          "section": "full detail",
+          "items":[{"type":"car", "price":"75"},{"type":"suv", "price":"150"},{"type":"truck", "price":"150"} ],
+          "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "details":["detail 1", "detail 2", "detail 3", "detail 4", "detail 5", "detail 6"]
         },
         {
-          "section":"Wash & Wax",
-          "icon":"fa-shower",
-          "packages":[
-            {"title":"Wash & Wax Package 1", "price":"70", "details":["detail 1", "detail 2", "detail 3"]},
-            {"title":"Wash & Wax Package 2", "price":"80", "details":["detail 1", "detail 2", "detail 3", "detail 4", "detail 5", "detail 6"]},
-            {"title":"Wash & Wax Package 3", "price":"90", "details":["detail 1", "detail 2", "detail 3 with more text", "detail 4", "detail 5", "detail 6", "detail 7 with more text", "detail 8"]},
-            {"title":"Wash & Wax Package 4", "price":"100", "details":["detail 1", "detail 2", "detail 3", "detail 4", "detail 5", "detail 6"]}
-          ]
-        },
-        {
-          "section":"Interior",
-          "icon":"fa-tachometer",
-          "packages":[
-            {"title":"Interior Package 1", "price":"70", "details":["detail 1", "detail 2", "detail 3"]},
-            {"title":"Interior Package 2", "price":"80", "details":["detail 1", "detail 2", "detail 3", "detail 4", "detail 5", "detail 6"]}
-          ]
-        },
-        {
-          "section":"Combo",
-          "icon":"fa-plus",
-          "packages":[
-            {"title":"Combo Package 1", "price":"70", "details":["detail 1", "detail 2", "detail 3"]},
-            {"title":"Combo Package 2", "price":"80", "details":["detail 1", "detail 2", "detail 3", "detail 4", "detail 5", "detail 6"]},
-            {"title":"Combo Package 3", "price":"60", "details":["detail 1", "detail 2", "detail 3 with more text", "detail 4", "detail 5", "detail 6", "detail 7 with more text", "detail 8"]}
-          ]
+          "section": "exterior only",
+          "items":[{"type":"wash & wax", "price":"20"}],
+          "description":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+          "details":["detail 1", "detail 2", "detail 3", "detail 4"]
         }
       ];
+
       ctrl.selectedService = ctrl.services[0];
       // functions
       ctrl.buildArray = function(num) {

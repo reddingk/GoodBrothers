@@ -1,24 +1,25 @@
-<div class="page-container content-page contactus-page">
-  <div class="page-title">Contact Us</div>
+<div class="section-container">
+  <div class="page-container content-page contactus-page">
+    <div class="page-title">Contact Us</div>
 
-  <div class="page-content-container">
-    <div class="message">to schedule and appointment or for any questions, contact us by phone or email.</div>
-    <div class="cover-contact">
-      <div class="contact-item">
-        <div class="icon-container"><i class="fa fa-volume-control-phone"></i></div>
-        <div class="info">{{$ctrl.contacts.phone}}</div>
+    <div class="page-content-container">
+      <div class="message">to schedule and appointment or for any questions, contact us by phone or email.</div>
+      <div class="cover-contact">
+        <div class="contact-item">
+          <div class="icon-container"><i class="fa fa-volume-control-phone"></i></div>
+          <div class="info">{{$ctrl.contacts.phone}}</div>
+        </div>
+        <div class="contact-item">
+          <div class="icon-container"><i class="fa fa-envelope"></i></div>
+          <div class="info">{{$ctrl.contacts.email}}</div>
+        </div>
       </div>
-      <div class="contact-item">
-        <div class="icon-container"><i class="fa fa-envelope"></i></div>
-        <div class="info">{{$ctrl.contacts.email}}</div>
-      </div>
-    </div>
 
-    <div class="message second">follow us at</div>
-    <div class="follow-container">
-      <a class="follow-icon {{item.title}}" ng-repeat="item in $ctrl.follow" href="{{item.url}}" target="_blank"><i class="fa {{item.icon}}"></i></a>
+      <div class="message second">follow us at</div>
+      <div class="follow-container">
+        <a class="follow-icon {{item.title}}" ng-repeat="item in $ctrl.follow" href="{{item.url}}" target="_blank"><i class="fa {{item.icon}}"></i></a>
+      </div>
     </div>
   </div>
-
-  <div class="scroll-instruction wallLeft invert" ng-click="$ctrl.scrollToSection('home')"><i class="fa fa-angle-double-up" aria-hidden="true"></i></div>
+  <div class="scroll-instruction wallRight" ng-click="$ctrl.scrollToSection('home')"><i class="fa fa-angle-double-up" aria-hidden="true"></i></div>
 </div>
