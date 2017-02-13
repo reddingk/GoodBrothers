@@ -285,7 +285,14 @@ all {
             text-transform: uppercase;
           }
         }
-        .navbar-toggle { border-color: rgba(0,0,0,0); .icon-bar { background-color: rgba(0,0,0,1);}}
+        .navbar-toggle {
+          border-radius: 0px !important;
+          border-color: rgba(0,0,0,0);
+          margin-top: 25px;
+          .icon-bar { background-color: rgba(0,0,0,1);}
+
+          &:focus { .icon-bar { background-color: rgba(255,255,255,1);}}
+        }
       }
 
       .navbar-collapse {
