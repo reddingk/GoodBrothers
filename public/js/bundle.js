@@ -483,7 +483,7 @@ directives.directive('navPass', ['$window', function($window) {
 
           var topSection = angular.element(document.getElementsByClassName(passName))[0];
           var windowp = angular.element($window)[0];
-          var topThreshhold = topSection.offsetTop;
+          var topThreshhold = topSection.offsetTop - element[0].clientHeight;
 
           if(windowp.pageYOffset >= topThreshhold){
             if(!element.hasClass("screenPass")){
