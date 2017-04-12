@@ -60,9 +60,9 @@ components.component('aboutus', {
       var ctrl = this;
       // variables
       ctrl.content = [
-        {"icon":"fa-handshake-o", "title":"Our Promise", "img":"imgs/promise2.jpg","content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."},
-        {"icon":"fa-map-marker", "title":"Where We Are Located", "img":"imgs/where1.jpg","content":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."},
-        {"icon":"fa-id-card-o", "title":"JD + H", "img":"imgs/BC.jpg","content":"Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur."}
+        {"icon":"fa-handshake-o", "title":"Our Promise", "img":"imgs/promise2.jpg","content":"At Good Brothers Mobile Detailing we offer a signature detailing service that help's us stand by our statement 'Its Better When We Do It'.  From Interior to Exterior services we take full care of your vehicle to have it looking good as new."},
+        {"icon":"fa-map-marker", "title":"Where We Are Located", "img":"imgs/where1.jpg","content":"Based out of the northern Delaware area we cover a radius that includes parts of Delaware, Maryland, & Pennsylvania.  For inquiries/information on our services or to set up an appointment feel free to contact us at 302-566-5960."},
+        {"icon":"fa-id-card-o", "title":"JD + H", "img":"imgs/BC.jpg","content":"We are here to make sure you receive the best possible service and exceed your expectations.  We wish to create lasting relationships with every customer so we make sure the job is done right, every time."}
       ];
 
       ctrl.selected = ctrl.content[0];
@@ -257,14 +257,14 @@ components.component('services', {
         {
           "section": "full detail",
           "items":[{"type":"car", "price":"75"},{"type":"suv", "price":"150"},{"type":"truck", "price":"150"} ],
-          "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-          "details":["detail 1", "detail 2", "detail 3", "detail 4", "detail 5", "detail 6"]
+          "description":"Our full detail package will cover every detailing task from interior to exterior to ensure that we have your vehicle looking good as new.",
+          "details":["Full Interior Vacuum", "Carpet Shampoo/Steam Clean", "Clean/Protect Dashboard & All Interior Surfaces", "Full Exterior Body Wash","Rim Cleaning", "Tire Shine", "Detail Logos & Trims"]
         },
         {
           "section": "exterior only",
-          "items":[{"type":"wash & wax", "price":"20"}],
-          "description":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
-          "details":["detail 1", "detail 2", "detail 3", "detail 4"]
+          "items":[{"type":"wash & wax", "price":"35"}],
+          "description":"Our select exterior pacakage will give your car that spot free shine.",
+          "details":["Full Exterior Body Wash","Rim Cleaning", "Tire Shine", "Detail Logos & Trims"]
         }
       ];
 
@@ -312,11 +312,8 @@ components.component('testimonies', {
       ctrl.allItems = [
         {"id":0, "name":"S. Morris", "content":"S/O to my cuzzo jay Jay Douglas Goodbrothers Mobiledetailing for doing such an amazing job on my car today!!!! ☺️"},
         {"id":1, "name":"H. Boogie", "content":"Goodbrothers Mobiledetailing they are the cheapest around with the best work! "},
-        {"id":2, "name":"Test 2", "content":"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."},
-        {"id":3, "name":"Test 3", "content":"Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."},
-        {"id":4, "name":"Test 4", "content":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."},
-        {"id":5, "name":"Test 5", "content":"Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."},
-        {"id":6, "name":"Test 6", "content":"Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem."},
+        {"id":2, "name":"V. Willams", "content":"Thanks Goodbrothers, you guys had my car ready for the summer."},
+        {"id":3, "name":"T. Evans", "content":"It was alot easier to have them detail my car and they had it like new."}
       ];
       ctrl.currentId = -1;
       /*ctrl.displayItems = [
