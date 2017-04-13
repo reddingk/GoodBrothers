@@ -8,13 +8,13 @@ components.component('services', {
           "section": "full detail",
           "items":[{"type":"car", "price":"75"},{"type":"suv", "price":"150"},{"type":"truck", "price":"150"} ],
           "description":"Our full detail package will cover every detailing task from interior to exterior to ensure that we have your vehicle looking good as new.",
-          "details":["Full Interior Vacuum", "Carpet Shampoo/Steam Clean", "Clean/Protect Dashboard & All Interior Surfaces", "Full Exterior Body Wash","Rim Cleaning", "Tire Shine", "Detail Logos & Trims"]
+          "details":["Full Interior Vacuum", "Carpet Shampoo", "Clean/Protect Dashboard & All Interior Surfaces", "Full Exterior Body Wash","Rim Cleaning", "Tire Shine", "Detail Logos & Trims", "Premium Wax"]
         },
         {
           "section": "exterior only",
-          "items":[{"type":"wash & wax", "price":"35"}],
+          "items":[{"type":"wash & wax", "price":"20"}],
           "description":"Our select exterior pacakage will give your car that spot free shine.",
-          "details":["Full Exterior Body Wash","Rim Cleaning", "Tire Shine", "Detail Logos & Trims"]
+          "details":["Full Exterior Body Wash","Rim Cleaning", "Tire Shine", "Detail Logos & Trims", "Premium Wax", "Streak-Free Dry"]
         }
       ];
 

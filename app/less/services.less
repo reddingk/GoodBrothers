@@ -46,7 +46,7 @@
               border-top: 1px solid rgba(0,0,0,1);
               width: 127px;
               transform: rotate(45deg);
-              transform-origin: 0 0;
+              transform-origin: 0 0;              
               @media @mobile-screen { display: none; }
             }
             @media @mobile-screen { border-right: 2px solid rgba(0,0,0,1); }
@@ -69,12 +69,12 @@
         .service-description { text-align: center; padding: 20px; font-weight: bold;}
         .service-details {
           padding: 5px;
-          -webkit-column-count: 2; /* Chrome, Safari, Opera */
-          -moz-column-count: 2; /* Firefox */
-          column-count: 2;
+          display: flex;
+          flex-flow: row wrap;
+          justify-content: space-around;
           .detail-item {
             padding: 2px 5px;
-            text-align: center;
+            width: 40%;
             i { padding-right: 7px; }
             span { }
           }
